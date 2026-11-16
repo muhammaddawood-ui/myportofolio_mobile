@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class ItemHomepage {
   final String name;
   final IconData icon;
+  final Color color;
 
-  ItemHomepage(this.name, this.icon);
+  ItemHomepage(this.name, this.icon, this.color);
 }
 
 class MyHomePage extends StatelessWidget {
@@ -15,9 +16,9 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP F";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Proyek", Icons.folder),
-    ItemHomepage("Tambah Proyek", Icons.add_circle),
-    ItemHomepage("Logout", Icons.logout),
+    ItemHomepage("Lihat Proyek", Icons.folder, Colors.lightGreenAccent),
+    ItemHomepage("Tambah Proyek", Icons.add_circle, Colors.yellowAccent),
+    ItemHomepage("Logout", Icons.logout, Colors.lightBlueAccent),
   ];
 
     @override
@@ -131,8 +132,8 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      // Menggunakan warna sekunder dari skema tema aplikasi.
-      color: Theme.of(context).colorScheme.secondary,
+      // Pakai warna each item
+      color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         // Aksi ketika kartu ditekan oleh pengguna.
