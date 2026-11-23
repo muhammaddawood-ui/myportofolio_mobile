@@ -12,3 +12,14 @@ DEKLARASI AI:
 Saya menggunakan Claude untuk:
 1. Mempelajari tutorial-8 dan PPT materi dengan membuat rangkuman untuk kebutuhan menjawab pertanyaan reflektif.
 2. Mempelajari built-in dart & flutter command/features yang tidak disebutkan di tutorial, seperti command dart format lib
+
+
+### Tugas 8
+1. Navigator menyimpan halaman dalam bentuk stack. push() menaruh page baru di atas current page, pushReplacement() mengganti top page dengan new page, sehingga page lama hilang dari stack. pop() membuang page paling atas dan kembali ke page di bawahnya. Kartu aksi "Tambah Experience" memakai Navigator.push(), supaya setelah form terbuka pengguna masih bisa kembali ke halaman utama dengan tombol back perangkat/browser. Opsi Home di drawer memakai Navigator.pushReplacement() ke MyHomePage. Dengan begitu, halaman form yang sedang dibuka diganti dengan halaman utama, dan halaman tidak menumpuk setiap kali pengguna berpindah lewat drawer.
+2. Scaffold memberi kerangka yang sama untuk every page, dengan appBar di atas, drawer di samping, dan body untuk konten. Karena halaman utama, form proyek, dan form experience memakai pola yang sama, susunan tiap halaman jadi mudah ditebak oleh pengguna. Drawer dibuat satu kali sebagai widget LeftDrawer di lib/widgets/ lalu dipakai ulang di ketiga halaman, jadi menu navigasinya selalu sama dan perubahannya cukup dilakukan di satu tempat. Contoh warna tema yang dipakai di lebih dari satu halaman adalah Theme.of(context).colorScheme.primary (turunan dari seed Colors.indigo di main.dart) dipakai sebagai warna AppBar di halaman utama dan juga sebagai warna AppBar, switch, serta tombol Save di form experience.
+3. Form disusun dalam Column satu kolom dengan crossAxisAlignment.start. Di HP, pengguna cukup mengisi dari atas ke bawah. Setiap input dibungkus Padding supaya antarfield ada jarak yang konsisten. Field tanggal selesai hanya muncul kalau switch "Masih berlangsung" dimatikan, jadi form tidak dipenuhi input yang belum relevan. Seluruh Column dibungkus SingleChildScrollView. Ini penting karena saat keyboard muncul, sebagian layar ketutupan, menyempit. Tanpa widget penggulir, field bagian bawah dan tombol Save bisa tertutup atau memicu overflow. Dengan scroll, semua input tetap bisa dijangkau.
+
+DEKLARASI AI:
+AI digunakan untuk:
+1. Mempelajari penggunaan showDatePicker() untuk field tanggal di experience_form, termasuk keperluan untuk mengosongkan controller untuk mengembalikan variable ke state awal - dengan dispose() untuk pembersihan.
+2. Mempelajari best-practice build() dengan membaginya dalam method terpisah seperti _inputDecoration() dan _resetForm()
